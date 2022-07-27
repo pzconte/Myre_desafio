@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lista de Colegios</title>
+    <style>
+    table, th, td {
+    border: 1px solid black;
+    }
+    </style>
+  </head>
+  <body>
+
+<p>
+    Lista de Colegios
+</p>
+{% if all_schools %}
+    <table>
+        <tbody>
+      <thead>
+        <tr>
+            <th>Nombre Colegio</th>
+            <th>Id</th>
+            <th>Listado Alumnos</th>
+            <th>Listado de Cursos</th>
+         </tr>
+  </thead>
+        {% for school in all_schools %}
+            <tr>
+                <td>{{ school.school_name }}</td>
+                <td>{{ school.id }}</td>
+                <td><a href="/myre/{{school.id}}/students/">Estudiantes {{ school.school_name }}</a></td>
+                <td><a href="/myre/{{school.id}}/grades/">Cursos {{ school.school_name }}</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No Schools are available.</p>
+{% endif %}
+
+
+  </body>
+</html>

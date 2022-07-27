@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cursos</title>
+    <style>
+    table, th, td {
+    border: 1px solid black;
+    }
+    </style>
+  </head>
+  <body>
+  <p>
+    Listado de Cursos {{ school_grade.school_name }}
+  </p>
+
+{% if all_grades %}
+  <table>
+        <tbody>
+      <thead>
+        <tr>
+            <th>Curso</th>
+         </tr>
+  </thead>
+        {% for grade in all_grades %}
+            {% if grade.id_school == school_grade %}
+                    <tr>
+                        <td>{{ grade }}</td>
+                    </tr>
+                {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>There are no grades in this School.</p>
+
+{% endif %}
+
+
+  </body>
+</html>

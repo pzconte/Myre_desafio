@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lista de Proyectos - Myre</title>
+    <style>
+    table, th, td {
+    border: 1px solid black;
+    }
+    </style>
+  </head>
+  <body>
+
+<p>
+    Lista de Proyectos
+</p>
+{% if all_projects %}
+    <table>
+        <tbody>
+      <thead>
+        <tr>
+            <th>Nombre Proyecto</th>
+            <th>Fecha</th>
+            <th>Colegios</th>
+         </tr>
+  </thead>
+        {% for project in all_projects %}
+            <tr>
+                <td>{{ project.project_name }}</td>
+                <td>{{ project.project_date }}</td>
+                <td>
+                {% for school in project.School.all %}
+                    {{ school.id_school.school_name }} -
+                {% endfor %}
+                </td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No projects are available.</p>
+{% endif %}
+
+
+  </body>
+</html>
